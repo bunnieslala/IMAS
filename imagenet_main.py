@@ -735,9 +735,8 @@ def evaluate_model_attack_rs(model_wrapper, model_wrapper_aom,test_loader, epsil
         images, target = images.to(device), target.to(device)
         images = images.clone().detach().requires_grad_(True)
         # 先对每个batch利用PGD产生对抗样本
-        #adv_images = PGD_attack(model_wrapper, images, target, epsilon=1/255, alpha=1/255, iters=iters)
+        atk=torchattacks.PGD(model_wrapper, eps=1/255, alpha=1/255, steps=10, random_start=True)
         #atk=torchattacks.AutoAttack(model_wrapper, norm='Linf', eps=1/255, version='standard', n_classes=dataset_size, seed=None, verbose=False)
-        atk=torchattacks.AutoAttack(model_wrapper, norm='Linf', eps=1/255, version='rand', n_classes=dataset_size, seed=None, verbose=False)
         adv_images=atk(images,target)
         clean_images = images.clone().detach().requires_grad_(True)
         # 对每个对抗样本，进行num_samples次噪声采样，并平均输出
