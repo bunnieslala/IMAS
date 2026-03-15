@@ -850,7 +850,7 @@ def evaluate_model_attack_rs(model_wrapper, model_wrapper_aom,test_loader, epsil
     return acc,aom_acc,ars_acc,ars_aom_acc,clean_acc
 def main():
 
-    cfg = yaml.load(open("/home/guanbeibei/Tip-Adapter-main/Tip-Adapter-main/configs/imagenet.yaml", 'r'), Loader=yaml.Loader)
+    cfg = yaml.load(open("./configs/imagenet.yaml", 'r'), Loader=yaml.Loader)
     mask_config = {
         'use_mask_augment': True,
         'mask_augment_prob': 0.5,  # 使用mask增强的概率

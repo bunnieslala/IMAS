@@ -331,7 +331,7 @@ def main():
     """主函数 - 带mask增强的训练"""
     #multiprocessing.set_start_method('spawn')
     # 加载配置
-    cfg = yaml.load(open("/home/guanbeibei/Tip-Adapter-main/Tip-Adapter-main/configs/food101.yaml", 'r'), Loader=yaml.Loader)
+    cfg = yaml.load(open("./configs/food101.yaml", 'r'), Loader=yaml.Loader)
     
     # 添加mask增强相关配置
     mask_config = {
